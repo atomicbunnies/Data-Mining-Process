@@ -727,6 +727,101 @@ selected demonstration model.
 The Evaluation phase is appropriate for this educational
 experiment, with the limitations documented above.
 
+### Revision 2 - Implementation
+
+**Issue addressed after Round 2:**
+
+The evaluation compared multiple classification models,
+but it did not explicitly demonstrate why accuracy alone
+can be misleading for an imbalanced dataset.
+
+**Changes made:**
+
+Added a Naive Baseline Comparison analysis to Colab.
+
+The analysis:
+1. Creates an always-normal baseline that predicts
+   every machine as having no failure.
+2. Compares the baseline with the selected Random Forest
+   model using the held-out test set.
+3. Evaluates accuracy, precision, recall, and F1-score.
+4. Explains why failure detection metrics are important
+   when failures are relatively rare.
+
+**Results:**
+
+Always Normal:
+- Accuracy: 0.9660
+- Precision: 0.0000
+- Recall: 0.0000
+- F1-score: 0.0000
+- Actual failures detected: 0 out of 68
+
+Random Forest (threshold = 0.2):
+- Accuracy: 0.9725
+- Precision: 0.5699
+- Recall: 0.7794
+- F1-score: 0.6584
+- Actual failures detected: 53 out of 68
+
+The always-normal baseline achieved high accuracy
+because normal cases dominate the dataset, but it
+failed to detect any machine failures.
+
+Random Forest detected most failure cases while
+maintaining a higher F1-score.
+
+### AI Expert Review - Round 3
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and
+the CRISP-DM methodology.
+
+Re-evaluate the Evaluation phase after adding an
+always-normal baseline comparison.
+
+Assess whether the baseline comparison supports the
+model evaluation, whether the metrics are interpreted
+correctly, and whether the final model selection
+is justified.
+
+Identify remaining limitations without inventing results.
+
+**Review findings:**
+
+1. The always-normal baseline demonstrates why high
+   accuracy does not necessarily indicate useful
+   failure detection.
+2. Random Forest with threshold 0.2 detected 53
+   failures, while the baseline detected none.
+3. Precision, recall, and F1-score provide a more
+   informative comparison than accuracy alone.
+4. The selected Random Forest achieved the highest
+   F1-score among the evaluated model configurations.
+5. The comparison supports the educational objective
+   of identifying failure conditions rather than
+   simply predicting the majority class.
+
+**Remaining limitations:**
+
+- The dataset is synthetic.
+- The evaluation does not include operational
+  maintenance costs.
+- The baseline comparison does not establish
+  real-world deployment readiness.
+- External validation on independent industrial
+  data would be required.
+
+**Decision:**
+
+The Evaluation phase now includes model comparison,
+threshold analysis, confusion matrices, and a
+naive baseline comparison.
+
+The evaluation is sufficiently documented for
+the educational scope of this CRISP-DM project.
+
 ---
 
 ## 6. Deployment
