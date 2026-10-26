@@ -438,3 +438,93 @@ selected demonstration model.
 
 The Evaluation phase is appropriate for this educational
 experiment, with the limitations documented above.
+
+---
+
+## 6. Deployment
+
+### AI Expert Review - Round 1
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and the
+CRISP-DM methodology.
+
+Critically review the Deployment phase of this predictive
+maintenance project, including model persistence,
+preprocessing integration, prediction demonstration,
+classification threshold application, and operational
+limitations.
+
+Identify weaknesses and recommend specific improvements
+without inventing results.
+
+**Critique:**
+
+1. Saving the complete preprocessing and classification
+   pipeline is appropriate for model reuse.
+2. The prediction demonstration shows how new operating
+   measurements can generate a classification result.
+3. The original and reloaded models should be compared
+   to verify that saving and loading preserve predictions.
+4. The demonstration does not validate incoming data
+   ranges, missing fields, or incorrect data types.
+5. The prototype should not be described as a
+   production-ready industrial monitoring system.
+
+### Revision 1 - Implementation
+
+A model persistence validation check was added to Colab.
+
+The validation compares prediction scores from the
+original Random Forest pipeline and the reloaded pipeline
+using 2,000 held-out test samples.
+
+**Validation method:**
+
+- Compare prediction scores before and after model loading.
+- Use NumPy allclose with an absolute tolerance of 1e-12.
+- Confirm that the predictions match.
+
+**Result:**
+
+- Test samples checked: 2,000
+- Prediction consistency: PASS (if verified in Colab)
+
+The demonstration uses the previously selected
+classification threshold of 0.2.
+
+### AI Expert Review - Round 2
+
+**Review focus:**
+
+Reassess model persistence, prediction consistency,
+and deployment limitations following the validation.
+
+**Review findings:**
+
+1. The full preprocessing and classification pipeline
+   is saved together.
+2. The persistence check provides evidence that model
+   serialization preserves predictions in the current
+   environment, provided the check passes.
+3. The demonstration uses the same feature structure
+   as the training data.
+4. The classification threshold is applied consistently
+   with the evaluation phase.
+
+**Remaining limitations:**
+
+- The demonstration does not validate invalid or
+  out-of-range sensor inputs.
+- The model output has not been calibrated as a
+  real-world failure probability.
+- Software version compatibility has not been tested.
+- No production monitoring, external validation, or
+  integration with industrial equipment was performed.
+
+**Decision:**
+
+The Deployment implementation is suitable as an
+educational prediction demonstration, but not as a
+production-ready industrial system.
