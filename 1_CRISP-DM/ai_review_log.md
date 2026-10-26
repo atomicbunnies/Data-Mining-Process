@@ -94,6 +94,73 @@ established.
 The revised Business Understanding section is suitable for
 the educational scope of this project.
 
+
+### Revision 2 - Implementation
+
+**Issue identified in Round 2:**
+
+The project did not have operational maintenance costs
+or an acceptable false-alarm rate for selecting a
+financially optimal classification threshold.
+
+**Changes made:**
+
+Added Section 1.6, "Maintenance Decision and Practical
+Requirements," to the Colab notebook.
+
+The new section:
+1. Clarifies that model alerts support additional
+   inspection rather than confirm actual machine failure.
+2. Identifies the costs of missed failures and false alarms
+   as important operational considerations.
+3. Describes the need to define maintenance team capacity
+   and acceptable alert frequency.
+4. Explains why the threshold of 0.2 was selected using
+   training cross-validation F1-score rather than costs.
+5. States that the threshold is intended for an
+   educational demonstration.
+
+### AI Expert Review - Round 3
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and
+the CRISP-DM methodology.
+
+Re-evaluate the revised Business Understanding phase,
+including the new maintenance decision requirements.
+
+Determine whether the business objective, technical
+evaluation criteria, threshold selection rationale,
+and limitations are clearly aligned.
+
+Identify any remaining weaknesses without inventing
+operational costs or requirements.
+
+**Review findings:**
+
+1. The project now defines a more specific maintenance
+   inspection decision.
+2. The threshold selection method is clearly distinguished
+   from a cost-based operational decision.
+3. The new section identifies information required before
+   real-world deployment.
+4. The limitations are consistent with the synthetic
+   dataset and the educational scope of the project.
+
+**Remaining limitation:**
+
+Real maintenance costs and acceptable alert rates are
+unknown. The project cannot determine a financially
+optimal threshold or demonstrate real-world business value.
+
+**Decision:**
+
+The Business Understanding phase is sufficiently
+documented for this educational CRISP-DM project.
+Further operational validation would be required
+before real-world use.
+
 ---
 
 ## 2. Data Understanding
@@ -176,6 +243,76 @@ quality checks.
 The additional checks improve the Data Understanding phase
 for the educational scope of this project.
 
+
+### Revision 2 - Implementation
+
+**Issue addressed after Round 2:**
+
+The initial analysis used boxplots and correlations to
+describe differences between normal and failed machines.
+However, the differences were not fully quantified using
+group-level descriptive statistics.
+
+**Changes made:**
+
+Added a Sensor Group Comparison analysis to the Colab
+notebook.
+
+The new analysis:
+1. Calculates mean sensor values for normal and failed machines.
+2. Calculates median sensor values for both groups.
+3. Compares the numerical results with the existing boxplots.
+4. Documents the observed differences without claiming causation.
+
+**Results:**
+
+- Mean torque: 39.63 Nm (normal), 50.17 Nm (failure).
+- Mean tool wear: 106.69 min (normal), 143.78 min (failure).
+- Median rotational speed: 1,507 rpm (normal), 1,365 rpm (failure).
+- Median air temperature: 300.0 K (normal), 301.6 K (failure).
+- Median process temperature: 310.0 K (normal), 310.4 K (failure).
+
+### AI Expert Review - Round 3
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and
+the CRISP-DM methodology.
+
+Re-evaluate the Data Understanding phase after adding
+mean and median comparisons between normal and failed
+machines.
+
+Determine whether the new analysis supports the previous
+boxplot findings, improves the interpretation of sensor
+behavior, and avoids unsupported causal conclusions.
+
+Identify any remaining limitations.
+
+**Review findings:**
+
+1. The mean and median comparisons provide quantitative
+   support for the earlier boxplot observations.
+2. Torque and tool wear tend to be higher in the failure group.
+3. Median rotational speed is lower in the failure group.
+4. Process temperature shows relatively small differences.
+5. The interpretation appropriately distinguishes
+   statistical association from causation.
+
+**Remaining limitations:**
+
+- The analysis is descriptive and does not identify
+  the causes of machine failures.
+- The sensor distributions overlap between the groups.
+- The synthetic dataset cannot establish whether these
+  patterns generalize to real industrial equipment.
+
+**Decision:**
+
+The revised Data Understanding phase provides sufficient
+initial exploration and descriptive comparisons for this
+educational CRISP-DM project.
+
 ---
 
 ## 3. Data Preparation
@@ -252,6 +389,73 @@ preprocessing design after the validation checks.
 The Data Preparation workflow is suitable for the
 educational classification experiment, with the
 limitations documented above.
+
+
+### Revision 2 - Implementation
+
+**Issue addressed after Round 2:**
+
+The preprocessing structure was documented, but the
+transformed data had not been explicitly checked for
+invalid numerical values.
+
+**Changes made:**
+
+Added a Transformed Data Validation code cell to Colab.
+
+The validation:
+1. Applies the fitted preprocessing pipeline to training
+   and test data.
+2. Checks the transformed dataset dimensions.
+3. Verifies that no NaN or infinite values are present.
+4. Uses the existing training-fitted preprocessing rules
+   without refitting them on the test set.
+
+**Results:**
+
+- Training shape: (8000, 8)
+- Testing shape: (2000, 8)
+- Training values finite: True
+- Testing values finite: True
+- Validation result: PASS
+
+### AI Expert Review - Round 3
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and
+the CRISP-DM methodology.
+
+Re-evaluate the Data Preparation phase after adding
+validation checks for transformed training and test data.
+
+Assess whether the preprocessing output is numerically
+valid, consistent with the expected feature structure,
+and protected against preprocessing leakage.
+
+Identify remaining methodological limitations.
+
+**Review findings:**
+
+1. The transformed data contains the expected eight features.
+2. No NaN or infinite values were detected.
+3. The test data was transformed using preprocessing
+   parameters fitted on the training data.
+4. The validation provides additional evidence of
+   numerical consistency in the preprocessing workflow.
+
+**Remaining limitations:**
+
+- Numerical validity does not guarantee that incoming
+  real-world sensor measurements will be valid.
+- The dataset is synthetic.
+- Generalization to different machines or future
+  operating conditions remains unverified.
+
+**Decision:**
+
+The Data Preparation phase is sufficiently validated
+for the educational classification experiment.
 
 ---
 
@@ -489,7 +693,7 @@ using 2,000 held-out test samples.
 **Result:**
 
 - Test samples checked: 2,000
-- Prediction consistency: PASS (if verified in Colab)
+- Prediction consistency: PASS
 
 The demonstration uses the previously selected
 classification threshold of 0.2.
@@ -528,138 +732,3 @@ and deployment limitations following the validation.
 The Deployment implementation is suitable as an
 educational prediction demonstration, but not as a
 production-ready industrial system.
-
-### Revision 2 - Implementation
-
-**Issue identified in Round 2:**
-
-The project did not have operational maintenance costs
-or an acceptable false-alarm rate for selecting a
-financially optimal classification threshold.
-
-**Changes made:**
-
-Added Section 1.6, "Maintenance Decision and Practical
-Requirements," to the Colab notebook.
-
-The new section:
-1. Clarifies that model alerts support additional
-   inspection rather than confirm actual machine failure.
-2. Identifies the costs of missed failures and false alarms
-   as important operational considerations.
-3. Describes the need to define maintenance team capacity
-   and acceptable alert frequency.
-4. Explains why the threshold of 0.2 was selected using
-   training cross-validation F1-score rather than costs.
-5. States that the threshold is intended for an
-   educational demonstration.
-
-### AI Expert Review - Round 3
-
-**Review prompt:**
-
-Act as a world-renowned expert in data mining and
-the CRISP-DM methodology.
-
-Re-evaluate the revised Business Understanding phase,
-including the new maintenance decision requirements.
-
-Determine whether the business objective, technical
-evaluation criteria, threshold selection rationale,
-and limitations are clearly aligned.
-
-Identify any remaining weaknesses without inventing
-operational costs or requirements.
-
-**Review findings:**
-
-1. The project now defines a more specific maintenance
-   inspection decision.
-2. The threshold selection method is clearly distinguished
-   from a cost-based operational decision.
-3. The new section identifies information required before
-   real-world deployment.
-4. The limitations are consistent with the synthetic
-   dataset and the educational scope of the project.
-
-**Remaining limitation:**
-
-Real maintenance costs and acceptable alert rates are
-unknown. The project cannot determine a financially
-optimal threshold or demonstrate real-world business value.
-
-**Decision:**
-
-The Business Understanding phase is sufficiently
-documented for this educational CRISP-DM project.
-Further operational validation would be required
-before real-world use.
-
-### Revision 2 - Implementation
-
-**Issue addressed after Round 2:**
-
-The initial analysis used boxplots and correlations to
-describe differences between normal and failed machines.
-However, the differences were not fully quantified using
-group-level descriptive statistics.
-
-**Changes made:**
-
-Added a Sensor Group Comparison analysis to the Colab
-notebook.
-
-The new analysis:
-1. Calculates mean sensor values for normal and failed machines.
-2. Calculates median sensor values for both groups.
-3. Compares the numerical results with the existing boxplots.
-4. Documents the observed differences without claiming causation.
-
-**Results:**
-
-- Mean torque: 39.63 Nm (normal), 50.17 Nm (failure).
-- Mean tool wear: 106.69 min (normal), 143.78 min (failure).
-- Median rotational speed: 1,507 rpm (normal), 1,365 rpm (failure).
-- Median air temperature: 300.0 K (normal), 301.6 K (failure).
-- Median process temperature: 310.0 K (normal), 310.4 K (failure).
-
-### AI Expert Review - Round 3
-
-**Review prompt:**
-
-Act as a world-renowned expert in data mining and
-the CRISP-DM methodology.
-
-Re-evaluate the Data Understanding phase after adding
-mean and median comparisons between normal and failed
-machines.
-
-Determine whether the new analysis supports the previous
-boxplot findings, improves the interpretation of sensor
-behavior, and avoids unsupported causal conclusions.
-
-Identify any remaining limitations.
-
-**Review findings:**
-
-1. The mean and median comparisons provide quantitative
-   support for the earlier boxplot observations.
-2. Torque and tool wear tend to be higher in the failure group.
-3. Median rotational speed is lower in the failure group.
-4. Process temperature shows relatively small differences.
-5. The interpretation appropriately distinguishes
-   statistical association from causation.
-
-**Remaining limitations:**
-
-- The analysis is descriptive and does not identify
-  the causes of machine failures.
-- The sensor distributions overlap between the groups.
-- The synthetic dataset cannot establish whether these
-  patterns generalize to real industrial equipment.
-
-**Decision:**
-
-The revised Data Understanding phase provides sufficient
-initial exploration and descriptive comparisons for this
-educational CRISP-DM project.
