@@ -594,3 +594,72 @@ The Business Understanding phase is sufficiently
 documented for this educational CRISP-DM project.
 Further operational validation would be required
 before real-world use.
+
+### Revision 2 - Implementation
+
+**Issue addressed after Round 2:**
+
+The initial analysis used boxplots and correlations to
+describe differences between normal and failed machines.
+However, the differences were not fully quantified using
+group-level descriptive statistics.
+
+**Changes made:**
+
+Added a Sensor Group Comparison analysis to the Colab
+notebook.
+
+The new analysis:
+1. Calculates mean sensor values for normal and failed machines.
+2. Calculates median sensor values for both groups.
+3. Compares the numerical results with the existing boxplots.
+4. Documents the observed differences without claiming causation.
+
+**Results:**
+
+- Mean torque: 39.63 Nm (normal), 50.17 Nm (failure).
+- Mean tool wear: 106.69 min (normal), 143.78 min (failure).
+- Median rotational speed: 1,507 rpm (normal), 1,365 rpm (failure).
+- Median air temperature: 300.0 K (normal), 301.6 K (failure).
+- Median process temperature: 310.0 K (normal), 310.4 K (failure).
+
+### AI Expert Review - Round 3
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and
+the CRISP-DM methodology.
+
+Re-evaluate the Data Understanding phase after adding
+mean and median comparisons between normal and failed
+machines.
+
+Determine whether the new analysis supports the previous
+boxplot findings, improves the interpretation of sensor
+behavior, and avoids unsupported causal conclusions.
+
+Identify any remaining limitations.
+
+**Review findings:**
+
+1. The mean and median comparisons provide quantitative
+   support for the earlier boxplot observations.
+2. Torque and tool wear tend to be higher in the failure group.
+3. Median rotational speed is lower in the failure group.
+4. Process temperature shows relatively small differences.
+5. The interpretation appropriately distinguishes
+   statistical association from causation.
+
+**Remaining limitations:**
+
+- The analysis is descriptive and does not identify
+  the causes of machine failures.
+- The sensor distributions overlap between the groups.
+- The synthetic dataset cannot establish whether these
+  patterns generalize to real industrial equipment.
+
+**Decision:**
+
+The revised Data Understanding phase provides sufficient
+initial exploration and descriptive comparisons for this
+educational CRISP-DM project.
