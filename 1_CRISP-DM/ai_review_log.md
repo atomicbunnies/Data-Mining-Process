@@ -911,3 +911,74 @@ and deployment limitations following the validation.
 The Deployment implementation is suitable as an
 educational prediction demonstration, but not as a
 production-ready industrial system.
+
+### Revision 2 - Implementation
+
+**Issue addressed after Round 2:**
+
+The deployment prototype could generate predictions, but
+it did not include basic validation of incoming inputs.
+
+**Changes made:**
+
+Added an Input Validation function to the Colab notebook.
+
+The function checks:
+1. Required input columns.
+2. Finite numeric values.
+3. Valid product types (L, M, H).
+4. Non-negative tool wear time.
+
+**Test results:**
+
+- Valid example input: PASS
+- Invalid example with tool wear = -5: PASS (rejected)
+- Rejection reason: Tool wear cannot be negative.
+
+The validation function was tested separately from the
+existing prediction demonstration.
+
+### AI Expert Review - Round 3
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and the
+CRISP-DM methodology.
+
+Re-evaluate the Deployment phase after adding basic
+input validation.
+
+Assess whether the validation checks improve the
+prototype, whether the test results support the
+conclusions, and what limitations remain.
+
+Identify weaknesses without inventing results.
+
+**Review findings:**
+
+1. The input validation function adds basic protection
+   against missing columns and invalid input values.
+2. The valid example was accepted successfully.
+3. The negative tool wear example was rejected.
+4. The tests demonstrate basic input validation but
+   do not establish complete validation coverage.
+5. The validation function is not yet integrated into
+   the prediction demonstration.
+
+**Remaining limitations:**
+
+- Not all invalid input cases have been tested.
+- Physical sensor ranges are not fully validated.
+- The model output is not calibrated as a real-world
+  failure probability.
+- The prototype has not been externally validated
+  or deployed to actual industrial equipment.
+
+**Decision:**
+
+The Deployment phase includes a working prediction
+demonstration, model persistence validation, and
+basic input validation.
+
+The implementation is suitable for the educational
+scope of this project but is not production-ready.
