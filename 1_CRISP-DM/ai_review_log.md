@@ -528,3 +528,69 @@ and deployment limitations following the validation.
 The Deployment implementation is suitable as an
 educational prediction demonstration, but not as a
 production-ready industrial system.
+
+### Revision 2 - Implementation
+
+**Issue identified in Round 2:**
+
+The project did not have operational maintenance costs
+or an acceptable false-alarm rate for selecting a
+financially optimal classification threshold.
+
+**Changes made:**
+
+Added Section 1.6, "Maintenance Decision and Practical
+Requirements," to the Colab notebook.
+
+The new section:
+1. Clarifies that model alerts support additional
+   inspection rather than confirm actual machine failure.
+2. Identifies the costs of missed failures and false alarms
+   as important operational considerations.
+3. Describes the need to define maintenance team capacity
+   and acceptable alert frequency.
+4. Explains why the threshold of 0.2 was selected using
+   training cross-validation F1-score rather than costs.
+5. States that the threshold is intended for an
+   educational demonstration.
+
+### AI Expert Review - Round 3
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and
+the CRISP-DM methodology.
+
+Re-evaluate the revised Business Understanding phase,
+including the new maintenance decision requirements.
+
+Determine whether the business objective, technical
+evaluation criteria, threshold selection rationale,
+and limitations are clearly aligned.
+
+Identify any remaining weaknesses without inventing
+operational costs or requirements.
+
+**Review findings:**
+
+1. The project now defines a more specific maintenance
+   inspection decision.
+2. The threshold selection method is clearly distinguished
+   from a cost-based operational decision.
+3. The new section identifies information required before
+   real-world deployment.
+4. The limitations are consistent with the synthetic
+   dataset and the educational scope of the project.
+
+**Remaining limitation:**
+
+Real maintenance costs and acceptable alert rates are
+unknown. The project cannot determine a financially
+optimal threshold or demonstrate real-world business value.
+
+**Decision:**
+
+The Business Understanding phase is sufficiently
+documented for this educational CRISP-DM project.
+Further operational validation would be required
+before real-world use.
