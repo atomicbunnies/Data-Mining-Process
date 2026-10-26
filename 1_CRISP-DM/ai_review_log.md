@@ -547,6 +547,90 @@ The Modeling phase provides a reasonable educational
 comparison of classification methods and threshold
 selection, with the remaining limitations documented.
 
+### Revision 2 - Implementation
+
+**Issue addressed after Round 2:**
+
+The project compared model performance and selected a
+classification threshold, but it had not examined which
+input features the Random Forest relied on most.
+
+**Changes made:**
+
+Added Permutation Feature Importance analysis to Colab.
+
+The analysis:
+1. Uses the trained Random Forest pipeline.
+2. Randomly permutes each original input feature.
+3. Measures the resulting change in F1-score.
+4. Repeats the process five times for each feature.
+5. Ranks the features by their mean importance.
+
+**Results:**
+
+- Torque: 0.6728
+- Rotational speed: 0.5861
+- Air temperature: 0.3620
+- Tool wear: 0.3018
+- Process temperature: 0.2720
+- Product type: 0.1830
+
+The importance values represent the average decrease in
+F1-score when each feature is permuted.
+
+The analysis used training data and the default
+classification threshold of 0.5.
+
+### AI Expert Review - Round 3
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and
+the CRISP-DM methodology.
+
+Re-evaluate the Modeling phase after adding permutation
+feature importance analysis.
+
+Assess whether the importance values are interpreted
+correctly, whether the analysis improves model
+understanding, and whether its methodological limitations
+are clearly documented.
+
+Identify any remaining weaknesses without inventing results.
+
+**Review findings:**
+
+1. Permutation importance provides additional information
+   about the model's reliance on input features.
+2. Torque and rotational speed showed the highest
+   importance values in this analysis.
+3. The results are consistent with these operating
+   measurements being useful to the trained model.
+4. Importance values should not be interpreted as
+   evidence that a feature causes machine failure.
+5. The analysis uses training data and F1-score at
+   threshold 0.5, which limits its interpretation
+   for the selected demonstration threshold of 0.2.
+
+**Remaining limitations:**
+
+- Correlated predictors can affect permutation importance.
+- Training-set importance may not reflect performance
+  on independent data.
+- The analysis does not establish causal relationships.
+- The importance ranking may differ under another
+  classification threshold or evaluation metric.
+
+**Decision:**
+
+The Modeling phase now includes performance comparison,
+threshold analysis, and an initial examination of
+feature importance.
+
+These analyses are sufficient for the educational
+scope of this project, provided their limitations
+remain clearly documented.
+
 ---
 
 ## 5. Evaluation
