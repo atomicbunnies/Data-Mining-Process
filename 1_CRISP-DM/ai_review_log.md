@@ -342,3 +342,99 @@ and documenting the threshold selection process.
 The Modeling phase provides a reasonable educational
 comparison of classification methods and threshold
 selection, with the remaining limitations documented.
+
+---
+
+## 5. Evaluation
+
+### AI Expert Review - Round 1
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and the
+CRISP-DM methodology.
+
+Critically review the Evaluation phase of this predictive
+maintenance project, including held-out test performance,
+confusion matrices, false positives, false negatives,
+and final model selection.
+
+Identify methodological weaknesses and recommend specific
+improvements without inventing results.
+
+**Critique:**
+
+1. A separate held-out test set was appropriately used
+   for final model evaluation.
+2. Precision, recall, F1-score, and ROC-AUC provide
+   useful performance comparisons.
+3. False positives and false negatives were reported,
+   but visual comparisons would improve interpretation.
+4. The selected Random Forest threshold of 0.2 achieved
+   the highest F1-score among the evaluated configurations.
+5. The best threshold for actual maintenance operations
+   cannot be determined without operational cost data.
+
+### Revision 1 - Implementation
+
+A confusion matrix visualization was added to Colab
+to compare all three evaluated configurations.
+
+**Held-out test results:**
+
+Logistic Regression (threshold = 0.5):
+- True positives: 56
+- False negatives: 12
+- False positives: 339
+- F1-score: 0.2419
+
+Random Forest (threshold = 0.5):
+- True positives: 30
+- False negatives: 38
+- False positives: 3
+- F1-score: 0.5941
+
+Random Forest (threshold = 0.2):
+- True positives: 53
+- False negatives: 15
+- False positives: 40
+- F1-score: 0.6584
+
+The visualization makes the trade-off between missed
+failures and false alarms easier to compare.
+
+### AI Expert Review - Round 2
+
+**Review focus:**
+
+Reassess the Evaluation phase after adding confusion
+matrix visualizations and written interpretations.
+
+**Review findings:**
+
+1. The confusion matrices clearly compare different
+   types of classification errors.
+2. Logistic Regression achieved the highest recall
+   but produced substantially more false alarms.
+3. Random Forest with a threshold of 0.5 generated
+   very few false alarms but missed more failures.
+4. Random Forest with a threshold of 0.2 achieved
+   the highest F1-score among the evaluated settings.
+5. The final model selection is consistent with the
+   project's educational evaluation objective.
+
+**Remaining limitations:**
+
+- Test results are based on synthetic data.
+- The evaluation does not include real maintenance costs.
+- The test set does not represent an independent factory.
+- The findings do not establish real-world operational
+  reliability.
+
+**Decision:**
+
+Random Forest with a threshold of 0.2 remains the
+selected demonstration model.
+
+The Evaluation phase is appropriate for this educational
+experiment, with the limitations documented above.
