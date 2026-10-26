@@ -94,7 +94,6 @@ established.
 The revised Business Understanding section is suitable for
 the educational scope of this project.
 
-
 ---
 
 ## 2. Data Understanding
@@ -177,3 +176,169 @@ quality checks.
 The additional checks improve the Data Understanding phase
 for the educational scope of this project.
 
+---
+
+## 3. Data Preparation
+
+### AI Expert Review - Round 1
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and the
+CRISP-DM methodology.
+
+Critically review the Data Preparation phase, including
+feature selection, train/test splitting, class imbalance,
+preprocessing, and data leakage prevention.
+
+Identify methodological weaknesses and recommend
+specific validation checks without inventing results.
+
+**Critique:**
+
+1. The feature selection appropriately excludes
+   identifiers and failure-type indicators.
+2. Stratified train/test splitting is suitable for the
+   imbalanced target distribution.
+3. Preprocessing is correctly placed inside the model
+   pipeline, but the transformed feature structure
+   has not been explicitly documented.
+4. Missing values and class counts should be verified
+   after splitting for reproducibility.
+
+### Revision 1 - Implementation
+
+Additional validation checks were added to Colab.
+
+**Results:**
+
+- Training missing values: 0
+- Testing missing values: 0
+- Training failure cases: 271
+- Testing failure cases: 68
+- Transformed feature count: 8
+
+The preprocessing pipeline contains five numeric
+features and three one-hot encoded product-type features.
+
+### AI Expert Review - Round 2
+
+**Review focus:**
+
+Reassess the feature selection, splitting, and
+preprocessing design after the validation checks.
+
+**Review findings:**
+
+1. The feature selection excludes known target-leakage
+   columns and identifiers.
+2. Stratified splitting preserves a similar failure
+   distribution across training and test sets.
+3. The preprocessing output is consistent with the
+   expected eight transformed features.
+4. The fitted preprocessing pipeline is included
+   in the trained model.
+
+**Remaining limitations:**
+
+- The dataset contains only synthetic records.
+- Random splitting cannot establish generalization
+  to different machines, factories, or future periods.
+- The workflow assumes incoming data follows the
+  same feature definitions as the training dataset.
+
+**Decision:**
+
+The Data Preparation workflow is suitable for the
+educational classification experiment, with the
+limitations documented above.
+
+---
+
+## 4. Modeling
+
+### AI Expert Review - Round 1
+
+**Review prompt:**
+
+Act as a world-renowned expert in data mining and the
+CRISP-DM methodology.
+
+Critically review the Modeling phase of this predictive
+maintenance project, including model selection,
+stratified cross-validation, class imbalance handling,
+evaluation metrics, and classification threshold selection.
+
+Identify methodological weaknesses and recommend
+specific improvements without inventing results.
+
+**Critique:**
+
+1. Logistic Regression and Random Forest provide useful
+   models for comparison.
+2. Five-fold stratified cross-validation is appropriate
+   for the imbalanced target distribution.
+3. Class weighting helps address imbalance, but it
+   does not guarantee better performance.
+4. ROC-AUC is useful, but Average Precision should also
+   be examined because failures are rare.
+5. The threshold of 0.2 was selected using training
+   cross-validation results, but it is not a
+   cost-optimal threshold for real maintenance operations.
+
+### Revision 1 - Implementation
+
+Average Precision was added as an additional evaluation
+metric for Random Forest.
+
+The calculation used out-of-fold prediction probabilities
+from the training data to avoid using the held-out test
+set for model selection.
+
+**Results:**
+
+- Average Precision (AP): 0.7489
+- Positive class rate: 0.0339 (3.39%)
+- Selected classification threshold: 0.20
+
+The Average Precision result indicates that Random Forest
+can rank failure cases more effectively than the
+positive-class-rate baseline on this synthetic dataset.
+
+The threshold of 0.2 was retained because it achieved
+the highest F1-score among the evaluated thresholds
+using training cross-validation predictions.
+
+### AI Expert Review - Round 2
+
+**Review focus:**
+
+Reassess the Modeling phase after adding Average Precision
+and documenting the threshold selection process.
+
+**Review findings:**
+
+1. The project now includes an additional metric
+   suitable for imbalanced classification.
+2. Cross-validation predictions were used to evaluate
+   Average Precision without using the test set.
+3. The classification threshold was selected from
+   training data rather than final test performance.
+4. The model comparison demonstrates a clear
+   precision-recall trade-off.
+
+**Remaining limitations:**
+
+- Only two classification algorithms were evaluated.
+- Class weighting and threshold adjustment do not
+  establish reliable real-world failure probabilities.
+- The selected threshold maximizes F1-score among the
+  tested values, not actual maintenance cost savings.
+- Additional datasets and external validation would be
+  necessary before industrial deployment.
+
+**Decision:**
+
+The Modeling phase provides a reasonable educational
+comparison of classification methods and threshold
+selection, with the remaining limitations documented.
