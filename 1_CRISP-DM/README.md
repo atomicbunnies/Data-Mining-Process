@@ -254,7 +254,7 @@ A total of six CRISP-DM phases were reviewed, with three AI review rounds and tw
 
 The review log records the review prompts, findings, changes, and remaining limitations.
 
-See [AI Expert Review Log](ai_review_log.md) for details.
+See [AI Expert Review Log](revision_log.md) for details.
 
 These reviews were AI-assisted critiques rather than independent assessments by human domain experts.
 
@@ -292,7 +292,7 @@ An internet connection is required to download the dataset.
 | File | Description |
 |---|---|
 | `CRISP_DM_Predictive_Maintenance.ipynb` | Complete Colab notebook covering all six CRISP-DM phases |
-| `ai_review_log.md` | AI-assisted critique and revision history |
+| `revision_log.md` | AI-assisted critique and revision history |
 | `README.md` | Project overview, methodology, results, and instructions |
 
 ## 11. Limitations
@@ -318,3 +318,8 @@ Random Forest with a threshold of 0.2 achieved an F1-score of 0.6584 and recall 
 The project also demonstrated the importance of handling class imbalance, preventing target leakage, comparing classification thresholds, and validating model inputs.
 
 Although the model is not ready for industrial deployment, the project provides a reproducible educational example of a complete data mining workflow.
+
+## 13. Project Links
+
+- **Medium Article:** https://medium.com/@byeonggwan.cho/predicting-machine-failures-with-crisp-dm-a-data-mining-project-486c8d79afd0
+- **YouTube Presentation:** https://youtu.be/W6OytMXlLys
