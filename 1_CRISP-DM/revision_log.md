@@ -982,3 +982,13 @@ basic input validation.
 
 The implementation is suitable for the educational
 scope of this project but is not production-ready.
+
+### Final Implementation Note
+
+After the third Deployment review, input validation was integrated into the prediction function in the final notebook.
+
+The `predict_machine_failure()` function now validates the input before generating predictions.
+
+The final tests confirmed that a valid example was classified as NORMAL and an example with negative tool wear was rejected before prediction.
+
+This additional implementation addresses the integration limitation identified in the third review. The remaining limitations related to sensor ranges, model calibration, and real-world validation still apply.
