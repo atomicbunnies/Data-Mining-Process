@@ -105,15 +105,16 @@ The notebook uses **Python**, **pandas**, **NumPy**, **Matplotlib**, **Seaborn**
 ## Project Files and Resources
 
 - `SEMMA_Overwatch_Esports_Analysis.ipynb` — Full notebook with code, outputs, and SEMMA findings.
-- `ai_review_log.md` — AI-assisted expert review history, including three reviews and two revisions for each of the five SEMMA phases.
+- `revision_log.md` — AI-assisted expert review history, including three reviews and two revisions for each of the five SEMMA phases.
 - `README.md` — Project overview and instructions (this file).
 
-**Medium article:** To be added after publication.  
-**YouTube walkthrough:** To be added after upload.
+Medium article: https://medium.com/@byeonggwan.cho/predicting-overwatch-match-winners-with-semma-a-data-mining-project-54fc2fc43a24
+
+YouTube walkthrough: https://youtu.be/V-HA9ozn6KA
 
 ## AI-Assisted Review Process
 
-Each SEMMA phase received **three AI-assisted review rounds and two revisions**. Reviews prompted additional dataset consistency checks, stronger exploration findings, preprocessing validation, corrected date-safe cross-validation, and a more balanced test evaluation. The complete review and revision record is documented in `ai_review_log.md`.
+Each SEMMA phase received **three AI-assisted review rounds and two revisions**. Reviews prompted additional dataset consistency checks, stronger exploration findings, preprocessing validation, corrected date-safe cross-validation, and a more balanced test evaluation. The complete review and revision record is documented in `revision_log.md`.
 
 ## Conclusion
 
