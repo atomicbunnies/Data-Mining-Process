@@ -10,7 +10,7 @@
 
 The reviews assessed data selection, cleaning, feature construction, evaluation methodology, content accessibility, interpretation, and reproducibility. The initial implementation was retained in the notebook so revisions can be compared with earlier results. A review is not the same thing as independent human validation or proof of causal relationships.
 
-**Important version discrepancy discovered during final logging:** The latest uploaded notebook's saved outputs for [31], [39], and [42] report **14 successfully retrieved transcripts among 17 attempted**, whereas its Markdown at **Transcript Pilot Result**, **Interpretation - Initial Findings**, and **Interpretation - Final Expert Review**, as well as the current README, still describes an earlier run with **0 successful transcripts**. The 14 successful retrievals were **not subsequently analyzed for storytelling or introductions** in this notebook. The current document reports both run states explicitly; the notebook narrative and README must be reconciled before final submission. A successful transcript fetch by itself is not content analysis.
+**Final notebook verification:** The selected final notebook's saved outputs for [31], [39], and [42] report **0 successfully retrieved transcripts among 17 attempted**. Sixteen requests returned `RequestBlocked`, and one returned `VideoUnplayable`. This matches the notebook Markdown, README, and Medium article. The retrieval failures do not establish that the videos lack captions, and no systematic analysis of spoken introductions or storytelling was performed.
 
 ---
 
@@ -100,7 +100,7 @@ The reviews assessed data selection, cleaning, feature construction, evaluation 
 **Finding:** Metadata-only model metrics were insufficient to address the project's content-oriented question. Additional post-revision exploratory checks were conducted; they were **not** separately counted as a third revision cycle.  
 **Additional evidence [29]–[38]:** Selected **20 videos** (10 per country), checked publicly accessible embed metadata (**9 US, 8 KR**), attempted transcript retrieval, inspected description previews, improved crude keyword topic labeling with a more specific title-based classifier (**18/20 classified**), and expanded thumbnail extraction to **200 tested / 179 accessible** (**90 US, 89 KR**).  
 **Thumbnail findings:** Overall Spearman correlations between simple brightness, contrast, RGB variation and log views were weak in this outcome-stratified sample. Within-group coefficients varied in direction and magnitude. Five final thumbnail checks passed in the saved run.  
-**Transcript version note:** Early discussion documented **0/17** retrieved (16 `RequestBlocked`, one `VideoUnplayable`), but the latest saved notebook outputs report **14/17** successfully retrieved. **No systematic transcript-content labeling was performed** regardless of retrieval status.  
+**Transcript availability note:** In the selected final notebook, **0/17 transcripts** were retrieved (16 `RequestBlocked`, one `VideoUnplayable`). Public embed metadata was accessible for 17 of the 20 pilot videos, but spoken content could not be systematically analyzed. Transcript accessibility may vary across executions and environments.
 **Decision:** Do not claim to have evaluated actual storytelling, engagement, cultural causation, retention, or click-through rates. Sampling by view-count halves and image-access failures limit generalization.
 
 ---
@@ -125,7 +125,7 @@ The reviews assessed data selection, cleaning, feature construction, evaluation 
 ### Expert Review Round 3 — Synthesis, scope and reproducibility
 **Finding:** Conclusions must respect the limited R², Trending-only sampling, metadata proxy limitations and the distinction between successful transcript access and actual transcript analysis.  
 **Final check — [42]:** Consolidated five evidence categories and ran six consistency checks; **all six passed** in the saved outputs. This was **validation, not a third implemented revision**.  
-**Decision:** Treat conclusions as exploratory associations among sampled Trending videos. Report that the tested metadata model has limited explanatory power. Do not assert causes of popularity, prepublication forecasting reliability, viewership retention, or video-level storytelling effects. Correct inconsistent transcript availability statements prior to submission.
+**Decision:** Treat conclusions as exploratory associations among sampled Trending videos. Report that the tested metadata model has limited explanatory power. Do not assert causes of popularity, prepublication forecasting reliability, viewership retention, or video-level storytelling effects. Ensure transcript availability statements remain consistent across the final notebook, README, Medium article, and revision log.
 
 ---
 
@@ -148,8 +148,8 @@ Additional Data Mining exploratory work [29]–[38], Interpretation synthesis [3
 2. **Target definition:** View counts come from the first observed Trending record, not consistent post-upload horizons or final lifetime totals.
 3. **Metadata temporality:** Longest observed descriptions, tags and possibly edited titles may not match publication-time metadata.
 4. **Visual proxies:** Brightness, contrast and RGB variation cannot capture thumbnail text, people, expression, meaning or aesthetics; thumbnail subgroups were chosen using the outcome and had missing images.
-5. **Content analysis:** Classification is primarily title-based; retrieved transcript segments were not systematically evaluated for introductions, storytelling or references to contemporary events.
+5. **Content analysis:** Classification is primarily title-based. No transcripts were successfully retrieved in the selected final notebook, so spoken introductions, storytelling and references to contemporary events were not systematically evaluated.
 6. **Reproducibility:** Source CSVs and category JSONs must be provided in Google Drive; live thumbnail/transcript requests can change. A saved-output review does not replace a clean runtime execution.
-7. **Pre-submission correction required:** Reconcile the latest **14/17 transcript retrieval output** with Markdown sections and the existing README still claiming **0/17**. Record the run date or distinguish initial and later attempts. Update the final narrative without claiming content analysis that was not carried out.
+7. **Final documentation consistency:** The selected final notebook reports 0/17 successful transcript retrievals, consistent with the README and Medium article. No direct transcript-content analysis was performed. Future runs may produce different access results because external services can change.
 
-**Outcome:** The notebook documents meaningful iterative review and revision across all five KDD phases. Its numerical modeling and core validation results are coherent in the saved run, subject to the transcript-documentation discrepancy noted above.
+**Outcome:** The notebook documents meaningful iterative review and revision across all five KDD phases. Its numerical modeling and core validation results are coherent in the saved run. The final documentation consistently reports the transcript-access limitation without claiming analysis of spoken video content.
