@@ -113,7 +113,7 @@ Thumbnail availability and caption-access restrictions can change over time; sam
 ## Project Links
 
 - **Medium Article:** https://medium.com/@byeonggwan.cho/analyzing-youtube-trending-videos-with-kdd-a-data-mining-project-f01df821ce3f
-- **YouTube Presentation:** https://youtu.be/W6OytMXlLys
+- **YouTube Presentation:** https://youtu.be/CYepeqnoNuU
 
 ## Data attribution
 
