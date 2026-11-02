@@ -104,12 +104,16 @@ Thumbnail availability and caption-access restrictions can change over time; sam
 
 **Reproducibility note:** The notebook stores execution outputs, including the reported metrics. A clean end-to-end Colab run against the original Drive data and external YouTube endpoints has **not** been independently verified as part of this README review. The original notebook's output is therefore the source of the figures above. Fixed random seeds make sampling/model behavior more consistent but do not fix external website availability.
 
-## Project files
+## Project Files
 
-- `KDD_YouTube_Content_Analysis.ipynb` — analysis notebook.
-- `README.md` — project description, methods, results, reproducibility notes.
-- `ai_review_log.md` — planned detailed record of expert review rounds and revisions for each KDD stage.
-- Medium article and presentation/video links — to be added after publication.
+- `KDD_YouTube_Content_Analysis.ipynb` — Complete KDD analysis notebook with code and saved outputs.
+- `README.md` — Project overview, methodology, results, and reproducibility instructions.
+- `revision_log.md` — AI-assisted review history, including three review rounds and two revisions for each of the five KDD stages.
+
+## Project Links
+
+- **Medium Article:** https://medium.com/@byeonggwan.cho/analyzing-youtube-trending-videos-with-kdd-a-data-mining-project-f01df821ce3f
+- **YouTube Presentation:** https://youtu.be/W6OytMXlLys
 
 ## Data attribution
 
